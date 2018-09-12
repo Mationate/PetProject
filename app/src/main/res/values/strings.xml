@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PetProject</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="name">Nombre</string>
+    <string name="description">Descripción</string>
+    <string name="photo">Foto</string>
+    
+
+    <array name="form_fields">
+        <item>@string/name</item>
+        <item>@string/description</item>
+        <item>@string/photo</item>
+    </array>
+
+    <string name="vertical_form_stepper_form_last_step">Confirmar</string>
+
+</resources>
