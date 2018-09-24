@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import com.firebase.ui.auth.AuthUI;
 import com.mationate.petproject.R;
+import com.mationate.petproject.data.CurrentUser;
+import com.mationate.petproject.data.EmailProcessor;
+import com.mationate.petproject.data.Nodes;
 import com.mationate.petproject.views.main.MainActivity;
 
 import java.util.Arrays;
@@ -59,6 +62,9 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
     public void logged() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        CurrentUser user = new CurrentUser();
+        String sanitizedMail = new EmailProcessor().sanitizedEmail(user.getMail());
+        new Nodes().user(sanitizedMail).setValue(user.getUid());
         finish();
     }
 }

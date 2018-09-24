@@ -1,5 +1,6 @@
-package com.mationate.petproject.views.main;
+package com.mationate.petproject.views.main.form;
 
+import android.net.Uri;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,17 +10,22 @@ import android.widget.TextView;
 
 import com.mationate.petproject.R;
 import com.mationate.petproject.partials.FieldCallback;
+import com.mationate.petproject.partials.PhotoField;
 import com.mationate.petproject.partials.TextAreaField;
 import com.mationate.petproject.partials.TextInputField;
+
+import java.util.List;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
 
-public class StepperActivity extends AppCompatActivity implements VerticalStepperForm, FieldCallback {
+public class StepperActivity extends GalleryActivity implements VerticalStepperForm, FieldCallback, PhotoField.Listener {
 
     private TextInputField nameField;
     private TextAreaField descriptionField;
     private VerticalStepperFormLayout stepperFormLayout;
+    private PhotoField photoField;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,6 @@ public class StepperActivity extends AppCompatActivity implements VerticalSteppe
         VerticalStepperFormLayout.Builder.newInstance(stepperFormLayout, steps, this, this)
                 .displayBottomNavigation(true)
                 .init();
-
     }
 
     @Override
@@ -42,13 +47,17 @@ public class StepperActivity extends AppCompatActivity implements VerticalSteppe
             case 0:
                 nameField = new TextInputField(this);
                 nameField.setCallback(this);
-                nameField.setValidation(3);
+                nameField.setValidation(2);
                 return nameField;
             case 1:
                 descriptionField = new TextAreaField(this);
                 descriptionField.setCallback(this);
                 descriptionField.setValidation(50);
                 return descriptionField;
+            case 2:
+                photoField = new PhotoField(stepperFormLayout);
+                photoField.setCallback(this, this);
+                return photoField.getView();
             default:
                 return new EditText(this);
         }
@@ -91,5 +100,15 @@ public class StepperActivity extends AppCompatActivity implements VerticalSteppe
     @Override
     public void uncompleted(String error) {
         stepperFormLayout.setActiveStepAsUncompleted(error);
+    }
+
+    @Override
+    protected void photosReady(List<Uri> photos) {
+        photoField.setPhotos(photos);
+    }
+
+    @Override
+    public void requestPhotos() {
+        openGallery();
     }
 }

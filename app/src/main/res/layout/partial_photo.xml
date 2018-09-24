@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_marginTop="8dp"
+        android:text="Seleccione al menos una foto"
+        android:textColor="@color/colorTextLight"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"/>
+
+
+
+
+    <Button
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/ic_gallery_primary"
+        android:id="@+id/galleryBtn"
+        android:drawablePadding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/bg_rounded_button_primary"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="ABRIR GALERIA" />
+
+
+</LinearLayout>

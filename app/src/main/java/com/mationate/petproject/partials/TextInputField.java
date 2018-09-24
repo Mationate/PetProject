@@ -58,7 +58,7 @@ public class TextInputField extends android.support.v7.widget.AppCompatEditText 
         if (text.trim().length() > min) {
             callback.completed();
         } else {
-            callback.uncompleted("Introduzca màs de " + min + " caractéres");
+            callback.uncompleted("Introduzca más de " + min + " caractéres");
         }
     }
 }

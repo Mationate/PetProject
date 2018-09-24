@@ -56,13 +56,7 @@ public class DrawerFragment extends Fragment implements UploadPhoto.Callback {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-            requestPermissions(permissions, RC_GALLERY);
-        }
+
 
         TextView userEmail = view.findViewById(R.id.emailTv);
         TextView logoutTv = view.findViewById(R.id.logoutTv);
@@ -90,15 +84,6 @@ public class DrawerFragment extends Fragment implements UploadPhoto.Callback {
     }
 
     private void selectPhotos() {
-        Matisse.from(this)
-                .choose(MimeType.ofImage())
-                .countable(true)
-                .maxSelectable(9)
-                .gridExpectedSize(200)
-                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
-                .thumbnailScale(0.85f)
-                .imageEngine(new PicassoEngine())
-                .forResult(RC_CHOOSE);
     }
 
     @Override
