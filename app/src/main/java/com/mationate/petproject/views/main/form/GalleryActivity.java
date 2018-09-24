@@ -11,7 +11,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.mationate.petproject.data.UploadPhoto;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.PicassoEngine;
@@ -69,6 +68,7 @@ abstract class GalleryActivity extends AppCompatActivity {
                     Log.d("PHOTO", uri.toString());
                 }
                 photosReady(selections);
+
             }
         }
     }

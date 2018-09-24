@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 import com.mationate.petproject.R;
 
-public class TextInputField extends android.support.v7.widget.AppCompatEditText implements TextWatcher {
+public class TextInputField extends android.support.v7.widget.AppCompatEditText implements TextWatcher, PartialField {
 
     private FieldCallback callback;
     private int min;
@@ -37,9 +37,7 @@ public class TextInputField extends android.support.v7.widget.AppCompatEditText 
         addTextChangedListener(this);
     }
 
-    public boolean isValid() {
-        return getText().toString().trim().length() >= min;
-    }
+
 
 
     @Override
@@ -60,6 +58,15 @@ public class TextInputField extends android.support.v7.widget.AppCompatEditText 
         } else {
             callback.uncompleted("Introduzca más de " + min + " caractéres");
         }
+    }
+
+    @Override
+    public boolean isValid() {
+        return getText().toString().trim().length() >= min;
+    }
+
+    public String getResult (){
+        return getText().toString();
     }
 }
     

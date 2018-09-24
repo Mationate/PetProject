@@ -15,5 +15,7 @@
     </array>
 
     <string name="vertical_form_stepper_form_last_step">Confirmar</string>
+    <string name="vertical_form_stepper_form_continue">Continuar</string>
+    <string name="vertical_form_stepper_form_confirm_button">Enviar Datos</string>
 
 </resources>
