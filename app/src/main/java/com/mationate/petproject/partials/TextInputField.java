@@ -2,6 +2,7 @@ package com.mationate.petproject.partials;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -19,6 +20,7 @@ public class TextInputField extends android.support.v7.widget.AppCompatEditText 
     }
 
     private void setAppearance(Context context) {
+        setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         int top = (int) context.getResources().getDimension(R.dimen.input_field_padding_top);
         int sides = (int) context.getResources().getDimension(R.dimen.input_field_padding_sides);
@@ -30,7 +32,6 @@ public class TextInputField extends android.support.v7.widget.AppCompatEditText 
     public void setCallback(FieldCallback callback) {
         this.callback = callback;
     }
-
 
     public void setValidation(final int min) {
         this.min = min;

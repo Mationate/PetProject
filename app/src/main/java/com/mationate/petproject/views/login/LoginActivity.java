@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
                         .setTheme(R.style.LoginTheme)
-                        .setLogo(R.mipmap.ic_launcher_round)
+                        .setLogo(R.mipmap.ic_launcher)
                         .build(),
                 RC_SIGN_IN);
     }

@@ -1,29 +1,18 @@
 package com.mationate.petproject.views.main.form;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-
 import com.mationate.petproject.R;
-import com.mationate.petproject.adapter.PreviewPhotoAdapter;
-import com.mationate.petproject.data.Nodes;
-import com.mationate.petproject.data.UploadPhoto;
-import com.mationate.petproject.models.UserField;
+import com.mationate.petproject.models.Pet;
 import com.mationate.petproject.partials.FieldCallback;
 import com.mationate.petproject.partials.PartialField;
 import com.mationate.petproject.partials.PhotoField;
 import com.mationate.petproject.partials.TextAreaField;
 import com.mationate.petproject.partials.TextInputField;
 import com.mationate.petproject.views.main.MainActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +26,7 @@ public class StepperActivity extends GalleryActivity implements VerticalStepperF
     private VerticalStepperFormLayout stepperFormLayout;
     private PhotoField photoField;
     private List<PartialField> fields = new ArrayList<>();
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -44,10 +34,9 @@ public class StepperActivity extends GalleryActivity implements VerticalStepperF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stepper);
 
+        progressDialog = new ProgressDialog(this);
         String[] steps = getResources().getStringArray(R.array.form_fields);
-
         stepperFormLayout = findViewById(R.id.stepperForm);
-
         VerticalStepperFormLayout.Builder.newInstance(stepperFormLayout, steps, this, this)
                 .displayBottomNavigation(true)
                 .init();
@@ -95,17 +84,17 @@ public class StepperActivity extends GalleryActivity implements VerticalStepperF
 
     @Override
     public void sendData() {
-        UserField userField = new UserField();
-        userField.setName(nameField.getResult());
-        userField.setDescription(descriptionField.getResult());
-        userField.setPhoto(photoField.getResult());
-
-        new Nodes().petField().push().setValue(userField);
-        new UploadPhoto( this).toFirebase(photoField.getPhoto());
-        Intent intent = new Intent(StepperActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Subiendo Fotos");
+        progressDialog.setMessage("Al finalizar, se publicará la mascota");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        List<Uri> uris = photoField.getPhoto();
+        progressDialog.setMax(uris.size());
+        progressDialog.show();
+        Pet pet = new Pet();
+        pet.setName(nameField.getResult());
+        pet.setDescription(descriptionField.getResult());
+        new UploadPhoto( this).toFirebase(uris, pet);
     }
 
     @Override
@@ -120,7 +109,6 @@ public class StepperActivity extends GalleryActivity implements VerticalStepperF
 
     @Override
     protected void photosReady(List<Uri> photos) {
-        Log.d("PHOTOSREADY", String.valueOf((photos)));
         photoField.setPhotos(photos);
     }
 
@@ -131,11 +119,18 @@ public class StepperActivity extends GalleryActivity implements VerticalStepperF
 
     @Override
     public void progress(int progress) {
-
+        progressDialog.setProgress(progress);
     }
+
 
     @Override
     public void done() {
-
+        progressDialog.dismiss();
+        Intent intent = new Intent(StepperActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
+
+
+
 }

@@ -11,11 +11,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.mationate.petproject.R;
+import com.mationate.petproject.adapter.PreviewListener;
 import com.mationate.petproject.adapter.PreviewPhotoAdapter;
 
 import java.util.List;
 
-public class PhotoField implements View.OnClickListener, PartialField {
+public class PhotoField implements View.OnClickListener, PartialField, PreviewListener {
 
 
     private LinearLayout linearLayout;
@@ -32,10 +33,12 @@ public class PhotoField implements View.OnClickListener, PartialField {
         RecyclerView recyclerView = linearLayout.findViewById(R.id.previewRv);
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(
-                        linearLayout.getContext(), LinearLayoutManager.HORIZONTAL, false
+                        linearLayout.getContext(),
+                        LinearLayoutManager.HORIZONTAL,
+                        false
                 ));
         recyclerView.setHasFixedSize(true);
-        adapter = new PreviewPhotoAdapter();
+        adapter = new PreviewPhotoAdapter(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -72,12 +75,12 @@ public class PhotoField implements View.OnClickListener, PartialField {
         return adapter.getItemCount() > 0;
     }
 
-    public interface Listener {
-        void requestPhotos();
+    @Override
+    public void delete() {
+
     }
 
-    public String getResult(){
-        String location = String.valueOf(adapter.getPhotos());
-        return location;
+    public interface Listener {
+        void requestPhotos();
     }
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="8dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    tools:context=".views.details.DetailsActivity">
+
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:name="com.mationate.petproject.views.details.gallery.GalleryFragment"
+        tools:layout="@layout/fragment_gallery"/>
+
+    <TextView
+        android:paddingTop="16dp"
+        android:id="@+id/detailNameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/galleryFragment"
+        android:paddingBottom="8dp"
+        android:textSize="24sp"
+        tools:text="Bobby" />
+
+    <TextView
+        android:id="@+id/descriptionTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailNameTv"
+        android:paddingTop="8dp"
+        tools:text="blablbalblablablabla"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/mailBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_rounded_button_accent"
+        android:drawableStart="@drawable/fui_ic_mail_white_24dp"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:text="Enviar un mail"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
