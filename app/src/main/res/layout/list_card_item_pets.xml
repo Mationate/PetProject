@@ -12,14 +12,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp">
+        android:layout_height="match_parent">
 
         <com.mationate.petproject.views.widgets.TopCropImageView
             android:id="@+id/photoIv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="4dp"
             tools:src="@mipmap/ic_launcher" />
 
         <TextView

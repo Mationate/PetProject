@@ -1,15 +1,16 @@
 package com.mationate.petproject.views.widgets;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 public class TopCropImageView extends android.support.v7.widget.AppCompatImageView {
 
+    public TopCropImageView(Context context) {
+        super(context);
+        init();
+    }
 
     public TopCropImageView(Context context, AttributeSet attrs) {
         super(context, attrs);

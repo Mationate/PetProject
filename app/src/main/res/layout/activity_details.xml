@@ -3,10 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="8dp"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp"
-    android:paddingTop="8dp"
     tools:context=".views.details.DetailsActivity">
 
     <fragment
@@ -17,23 +13,42 @@
         tools:layout="@layout/fragment_gallery"/>
 
     <TextView
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:paddingTop="16dp"
         android:id="@+id/detailNameTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/galleryFragment"
-        android:paddingBottom="8dp"
-        android:textSize="24sp"
+        android:paddingBottom="4dp"
+        android:textSize="32sp"
         tools:text="Bobby" />
+    
+    <View
+        android:background="@color/colorAccent"
+        android:layout_below="@id/detailNameTv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
     <TextView
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:id="@+id/descriptionTv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:layout_below="@id/detailNameTv"
+        android:textColor="@color/colorTextLight"
         android:paddingTop="8dp"
         tools:text="blablbalblablablabla"
-        android:textSize="16sp" />
+        android:scrollbars = "vertical"
+        android:paddingBottom="8dp"
+        android:textSize="14sp" />
+
+    <View
+        android:background="@color/colorAccent"
+        android:layout_below="@id/descriptionTv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
     <TextView
         android:id="@+id/mailBtn"
@@ -54,6 +69,15 @@
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
+
+
+    <ProgressBar
+        android:layout_below="@id/galleryFragment"
+        android:id="@+id/detailsPb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

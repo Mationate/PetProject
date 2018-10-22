@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.mationate.petproject.views.widgets.LazyImage xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:orientation="horizontal">
-
-    <com.mationate.petproject.views.widgets.TopCropImageView
-        android:id="@+id/detailIv"
-        android:adjustViewBounds="true"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:padding="4dp" />
-</LinearLayout>
+    android:layout_height="300dp"/>

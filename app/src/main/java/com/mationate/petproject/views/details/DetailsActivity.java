@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
 import com.mationate.petproject.R;
 import com.mationate.petproject.models.Pet;
 import com.mationate.petproject.views.details.gallery.GalleryFragment;
+
+import static com.mationate.petproject.views.main.MainActivity.PET_KEY;
 
 
 public class DetailsActivity extends AppCompatActivity implements GetPet.PetCallback {
@@ -22,11 +25,12 @@ public class DetailsActivity extends AppCompatActivity implements GetPet.PetCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        pet = (Pet) getIntent().getSerializableExtra("pet");
+        pet = (Pet) getIntent().getSerializableExtra(PET_KEY);
         galleryFragment = (GalleryFragment) getSupportFragmentManager().findFragmentById(R.id.galleryFragment);
 
         name = findViewById(R.id.detailNameTv);
         description = findViewById(R.id.descriptionTv);
+        description.setMovementMethod(new ScrollingMovementMethod());
         mailBtn = findViewById(R.id.mailBtn);
         name.setText(pet.getName());
 
@@ -52,6 +56,7 @@ public class DetailsActivity extends AppCompatActivity implements GetPet.PetCall
             }
 
         });
+        findViewById(R.id.detailsPb).animate().alpha(0).start();
 
 
     }

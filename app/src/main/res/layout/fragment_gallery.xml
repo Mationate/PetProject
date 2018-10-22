@@ -12,6 +12,7 @@
 
 
     <com.mationate.petproject.adapter.details.DotsIndicator
+        android:alpha="0"
         android:id="@+id/dots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

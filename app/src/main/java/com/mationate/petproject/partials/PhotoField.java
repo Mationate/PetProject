@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.mationate.petproject.R;
-import com.mationate.petproject.adapter.PreviewListener;
-import com.mationate.petproject.adapter.PreviewPhotoAdapter;
+import com.mationate.petproject.adapter.stepform.PreviewListener;
+import com.mationate.petproject.adapter.stepform.PreviewPhotoAdapter;
 
 import java.util.List;
 

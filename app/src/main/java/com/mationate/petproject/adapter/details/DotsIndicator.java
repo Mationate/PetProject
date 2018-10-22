@@ -20,13 +20,15 @@ public class DotsIndicator extends LinearLayoutCompat {
         final int zero = 0;
         final LayoutParams layoutParams = new LayoutParams(size, size);
         layoutParams.setMargins(margin, zero, margin, zero);
+
         for (int i = 0; i < total; i++) {
             View view = new View(getContext());
             view.setLayoutParams(layoutParams);
-            int color = (i == 0) ? R.color.colorAccent : R.color.colorPrimary;
-            view.setBackgroundResource(color);
             addView(view);
         }
+
+        animate().alpha(1).setDuration(200).start();
+
     }
 
 
@@ -35,7 +37,7 @@ public class DotsIndicator extends LinearLayoutCompat {
         int childs = getChildCount();
         if (position < 0 || position > childs) return;
         for (int i = 0; i < childs; i++) {
-            int color = (i == position) ? R.color.colorAccent : R.color.colorPrimary;
+            int color = (i == position) ? R.drawable.bg_dot_selected : R.drawable.bg_dot_default;
             getChildAt(i).setBackgroundResource(color);
         }
     }

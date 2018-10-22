@@ -1,13 +1,13 @@
 package com.mationate.petproject.adapter.details;
+
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.mationate.petproject.R;
-import com.squareup.picasso.Picasso;
+import com.mationate.petproject.views.widgets.LazyImage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +28,10 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        final ImageView imageView = holder.imageView;
-        Picasso.with(imageView.getContext()).load(urls.get(position)).into(imageView);
+        LazyImage lazyImage = holder.container;
         //imageView.setOnTouchListener(new ImageMatrixTouchHandler(imageView.getContext()));
+        lazyImage.addContent();
+        lazyImage.setPhoto(urls.get(position));
 
     }
 
@@ -44,14 +45,14 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-
-        ImageView imageView;
+        private final LazyImage container;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.detailIv);
+            container = (LazyImage) itemView;
         }
     }
 }
