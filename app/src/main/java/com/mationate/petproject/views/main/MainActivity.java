@@ -6,28 +6,23 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.mationate.petproject.R;
-import com.mationate.petproject.adapter.main.PetAdapter;
-import com.mationate.petproject.adapter.main.PetListener;
-import com.mationate.petproject.data.Nodes;
-import com.mationate.petproject.models.Pet;
-import com.mationate.petproject.views.details.DetailsActivity;
 import com.mationate.petproject.views.login.LoginActivity;
+import com.mationate.petproject.views.main.body.list.ListFragment;
+import com.mationate.petproject.views.main.body.menu.MenuFragment;
 import com.mationate.petproject.views.main.form.StepperActivity;
 
 
-public class MainActivity extends AppCompatActivity implements PetListener {
+public class MainActivity extends AppCompatActivity implements MenuFragment.Callback {
 
 public final static String PET_KEY = "com.mationate.petproject.views.main.MainActivity.key.PET_KEY";
 
@@ -45,11 +40,12 @@ public final static String PET_KEY = "com.mationate.petproject.views.main.MainAc
 
                 Intent intent = new Intent(MainActivity.this, StepperActivity.class);
                 startActivity(intent);
+
             }
         });
 
-
-        RecyclerView rv = findViewById(R.id.petRv);
+/*
+        RecyclerView rv = findViewById(R.id.listFragmentRv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
         linearLayoutManager.setStackFromEnd(true);
         rv.setLayoutManager(linearLayoutManager);
@@ -61,16 +57,12 @@ public final static String PET_KEY = "com.mationate.petproject.views.main.MainAc
                 .build();
         PetAdapter adapter = new PetAdapter(options, this);
         rv.setAdapter(adapter);
-    }
+*/
 
+        //rv.setAdapter(null);
+        //new Nodes().petList().orderByChild("zone").equalTo(zone)
+        //TODO remove previous adapter, set new adapter with updated zone
 
-
-
-    @Override
-    public void clicked(Pet pet) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra(PET_KEY, pet);
-        startActivity(intent);
     }
 
     @Override
@@ -100,5 +92,13 @@ public final static String PET_KEY = "com.mationate.petproject.views.main.MainAc
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void selection(String zone) {
+        Log.d("SELECTION_MAIN", zone);
+        ListFragment fragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.listFragment);
+        fragment.setSelection(zone);
+
     }
 }

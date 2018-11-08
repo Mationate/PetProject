@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PetProject</string>
+    <string name="app_name">Petty</string>
 
 
     <string name="name">Nombre</string>
@@ -19,5 +19,45 @@
 
 
     <string name="action_logout">Cerrar sesión</string>
+
+<!--TODO CHANGE ZONE TO "REGION DE"-->
+    <string name="region1">I de Tarapacá</string>
+    <string name="region2">II de Antofagasta</string>
+    <string name="region3">III de Atacama</string>
+    <string name="region4">IV de Coquimbo</string>
+    <string name="region5">V de Valparaíso </string>
+    <string name="region6">VI del Libertador General Bernardo O’Higgins</string>
+    <string name="region7">VII del Maule</string>
+    <string name="region8">VIII del Bío-Bío</string>
+    <string name="region9">IX de la Araucanía</string>
+    <string name="region10">X de Los Lagos</string>
+    <string name="region11">XI de Aysén del General Carlos Ibañez del Campo </string>
+    <string name="region12">XII de Magallanes y de la Antártica Chilena</string>
+    <string name="region13">Metropolitana de Santiago</string>
+    <string name="region14">XIV de Los Ríos</string>
+    <string name="region15">XV de Arica y Parinacota</string>
+    <string name="region16">XVI del Ñuble </string>
+
+
+    <string-array name="zones">
+        <item>@string/region1</item>
+        <item>@string/region2</item>
+        <item>@string/region3</item>
+        <item>@string/region4</item>
+        <item>@string/region5</item>
+        <item>@string/region6</item>
+        <item>@string/region7</item>
+        <item>@string/region8</item>
+        <item>@string/region9</item>
+        <item>@string/region10</item>
+        <item>@string/region11</item>
+        <item>@string/region12</item>
+        <item>@string/region13</item>
+        <item>@string/region14</item>
+        <item>@string/region15</item>
+        <item>@string/region16</item>
+    </string-array>
+
+
 
 </resources>

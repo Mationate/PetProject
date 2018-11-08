@@ -76,6 +76,7 @@ public class StepperActivity extends GalleryActivity implements VerticalStepperF
                 photoField.setCallback(this, this);
                 fields.add(photoField);
                 return photoField.getView();
+                //TODO ADD EXTRA FIELD WITH AUTOCOMPLETETEXT
             default:
                 return new EditText(this);
         }
